@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+    <style>
+        .m{
+            margin-top: 64px;
+            margin-bottom: 200px;
+        }
+        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+            background-color: #152f4f;
+            color: lightskyblue;
+        }
+        .table table-striped{
+            border-radius: 10px!important;
+        }
+        .tooltip-inner {
+            width:400px;
+            max-width: 400px;
+            background-color: #152f4f;
+            color: #fff;
+            text-align: justify;
+            border-radius: 10px;
+            padding: 10px;
+            opacity: 1;
+        }
+    </style>
+
+        {###########################################################################}
+        {########################      Perfect Block      ##########################}
+        {###########################################################################}
+    <div class="container-fluid m">
+        <div class="title">
+            <h1>Liste des Article </h1>
+        </div>
+        <table class="table table-striped table-hover" style="border-radius:10px!important;">
+            <thead>
+            <tr class="text-light" style="background-color: #152f4f;">
+                <th><label for="titre">Le Titre</label></th>
+                <th><label for="size">La Taile</label></th>
+                <th><label for="resume">La Résumer</label></th>
+                <th class="text-center"><label for="content">Le Contenue</label></th>
+                <th><label for="date">La date de publication de l'article</label></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for article in articles %}
+                <tr data-href='{{ path("article.show",{id:article.id}) }}'>
+                    <td>{{ article.title }}</td>
+                    {# todo create an event to insert size automaticly during article submisssion #}
+                    <td>{{ (article.content)|StrCount }}</td>
+                    <td class="tooltiplink" data-toggle="tooltip" title="{{ article.resume }}"> {{ article.resume|slice(0, 40) }}</td>
+                    {# todo Create Extention twig substring https://symfony.com/doc/4.4/templating/twig_extension.html #}
+                    <td class="tooltiplink" data-toggle="tooltip" title="{{ article.content }}">
+                        {{ article.content|slice(0, 60) }}<img src="https://img.icons8.com/fluent/48/000000/more.png"
+                                                               height="26px"/>
+                    </td>
+                    <td>{{ (article.updatedAt|date) }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+        {###########################################################################}
+        {###########################################################################}
+{% endblock %}
+    {# todo check this function #}
+{#        {% set url = url('<current>') %}#}
+{#        {% if 'test' in url|render|render %}#}
+{#            <p>url contains "test"</p>#}
+{#        {% endif %}#}
+
+{% block javascripts %}
+    <script>
+        // Reference :   https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_tooltip&stacked=h
+        // Reference : https://stackoverflow.com/questions/17147821/how-to-make-a-whole-row-in-a-table-clickable-as-a-link
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+            $('*[data-href]').on('click', function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
+{% endblock %}
+
+
+
+

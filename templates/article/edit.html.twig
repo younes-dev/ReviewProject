@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+        .mt{
+            margin-top: 150px;
+        }
+    </style>
+    <div class="container mt">
+        <div class="title">
+            <h1 class="badge-primary text-center mb-5">Editer L'article</h1>
+        </div>
+
+        {#********************************************************************************#}
+
+        {{ form_start(form) }}
+        {{ form_row(form.title,{'attr': {'Placeholder': 'titre de l\'article'}}) }}
+        {{ form_row(form.Resume,{'attr': {'Placeholder': 'resuer de l\'article'}}) }}
+        {{ form_row(form.size,{'attr': {'Placeholder': 'size de l\'article'}}) }}
+        {{ form_row(form.Content,{'attr': {'Placeholder': 'content de l\'article'}}) }}
+        {{ form_row(form.CreatedAt,{'attr': {'Placeholder': 'date de l\'article'}}) }}
+        {{ form_rest(form) }}
+        <button type="submit" class="btn btn-primary"> Edit</button>
+        {{ form_end(form) }}
+
+        {#********************************************************************************#}
+
+
+{#         <div class="row">#}
+{#            <div class="col-10">#}
+{#                {{ form_start(form) }}#}
+{#                <div class="row">#}
+{#                    <div class="col-md-2">{{ form_row(form.title) }}</div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-md-2">{{ form_row(form.size) }}</div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-md-2">{{ form_row(form.Resume) }}</div>#}
+{#                </div>#}
+
+{#                <div class="row">#}
+{#                    <div class="col-md-3">{{ form_row(form.Content) }}</div>#}
+
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-md-3">{{ form_row(form.CreatedAt) }}</div>#}
+{#                </div>#}
+
+{#                {{ form_rest(form) }}#}
+
+{#                <button type="submit" class="btn btn-primary"> Edit</button>#}
+{#                {{ form_end(form) }}#}
+{#            </div>#}
+{#        </div>#}
+
+    </div>
+
+{% endblock %}
+

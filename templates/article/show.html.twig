@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+        .mt{
+            margin-top: 150px;
+        }
+        .row{
+            /*height: 60px;*/
+            margin:20px;
+        }
+    </style>
+{#    <div class="container mt">#}
+{#        <div class="title">#}
+{#            <h1 class="badge-primary text-center mb-5">Editer L'article</h1>#}
+{#        </div>#}
+
+{#        <div class="row">#}
+{#            <div class="col-10">#}
+{#                <div class="row">#}
+{#                    <div class="col-md-3"><label for="titre">Le Titre</label></div>#}
+{#                    <div class="col-md-6">{{ (article.title) }}</div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-md-3"><label for="size">La Taille</label></div>#}
+{#                    <div class="col-md-6">{{ (article.size) }}</div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-md-3"><label for="resume">La Résumer</label></div>#}
+{#                    <div class="col-md-6">{{ (article.Resume) }}</div>#}
+{#                </div>#}
+
+{#                <div class="row">#}
+{#                    <div class="col-md-3"><label for="content">Le Contenue</label></div>#}
+{#                    <div class="col-md-6">{{ (article.Content) }}</div>#}
+
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-md-3"><label for="date">La date de publication de l'article</label></div>#}
+{#                    <div class="col-md-6">{{ (article.CreatedAt|date) }}</div>#}
+{#                </div>#}
+
+
+{#                <button type="submit" class="btn btn-primary"> Edit</button>#}
+{#            </div>#}
+{#        </div>#}
+
+{#        #}
+{#    </div>#}
+
+
+    {###########################################################################}
+    {########################      Perfect Block      ##########################}
+    {###########################################################################}
+
+    <div class="container mt">
+        <div class="title">
+            <h1 class="badge-primary text-center mb-5">L'article</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4  mf-6"><label for="titre">Le Titre</label></div>
+            <div class="col-lg-8">{{ (article.title) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"><label for="size">La Taile</label></div>
+            <div class="col-lg-8">{{ (article.size) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"><label for="resume">La Résumer</label></div>
+            <div class="col-lg-8">{{ (article.Resume) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"><label for="content">Le Contenue</label></div>
+            <div class="col-lg-8">{{ (article.Content) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"><label for="date">La date de publication de l'article</label></div>
+            <div class="col-lg-8">{{ (article.CreatedAt|date) }}</div>
+        </div>
+        <div class="row">
+            {# todo Create Extention twig repeat to duplicate &nbsp  https://symfony.com/doc/4.4/templating/twig_extension.html #}
+            <a href="{{ path('article-edit',{id:article.id}) }}"  class="btn btn-primary mr-4">&nbsp&nbsp Edit &nbsp&nbsp</a>
+            <a href="{{ path('article-delete',{'id':article.id}) }}"  class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+
+        {###########################################################################}
+
+
+
+{% endblock %}
+
+
+

@@ -25,3 +25,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    # To check auto wired classes                           :  php bin/console debug:twig
+    # display only the information about a specific filter  : php bin/console debug:twig --filter=repeat
+    App\Twig\RepeatExtension:
+        autowire: true
+
+    # display only the information about a specific filter  : php bin/console debug:twig --filter=StrCount
+    App\Twig\StrCountExtension:
+        autowire: true
+
+
